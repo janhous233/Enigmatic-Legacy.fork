@@ -61,13 +61,6 @@ public class EldritchPan extends TieredItem implements Vanishable, ICursed, ICre
 	private static final ItemStack UNSUSPECTING_DIAMOND_SWORD = new ItemStack(Items.DIAMOND_SWORD);
 	public static final Map<Player, Integer> HOLDING_DURATIONS = new WeakHashMap<>();
 
-	// TODO:
-	// The Forbidden Fruit interaction
-	// Metal clang sound effect
-	// Make enchantable with sword enchants
-	// Repair with food
-	// The Acknowledgment lore
-
 	public static Omniconfig.DoubleParameter attackDamage = null;
 	public static Omniconfig.DoubleParameter attackSpeed = null;
 	public static Omniconfig.DoubleParameter armorValue = null;
@@ -116,7 +109,8 @@ public class EldritchPan extends TieredItem implements Vanishable, ICursed, ICre
 		builder.popPrefix();
 	}
 
-	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
+	private final Multimap<Attribute, AttributeModifier> defaultMainhandModifiers;
+	private final Multimap<Attribute, AttributeModifier> defaultOffhandModifiers;
 	//private final float attackDamage, attackSpeed, armorValue;
 
 	public EldritchPan() {
@@ -131,7 +125,11 @@ public class EldritchPan extends TieredItem implements Vanishable, ICursed, ICre
 		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", attackDamage.getValue(), AttributeModifier.Operation.ADDITION));
 		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", attackSpeed.getValue(), AttributeModifier.Operation.ADDITION));
 		builder.put(Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIER_UUID, "Weapon modifier", armorValue.getValue(), AttributeModifier.Operation.ADDITION));
-		this.defaultModifiers = builder.build();
+		this.defaultMainhandModifiers = builder.build();
+
+		builder = ImmutableMultimap.builder();
+		builder.put(Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIER_UUID, "Weapon modifier", armorValue.getValue(), AttributeModifier.Operation.ADDITION));
+		this.defaultOffhandModifiers = builder.build();
 
 		DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
 	}
@@ -141,7 +139,7 @@ public class EldritchPan extends TieredItem implements Vanishable, ICursed, ICre
 		if (slot != EquipmentSlot.MAINHAND && slot != EquipmentSlot.OFFHAND)
 			return super.getDefaultAttributeModifiers(slot);
 
-		return this.defaultModifiers;
+		return slot == EquipmentSlot.MAINHAND ? this.defaultMainhandModifiers : this.defaultOffhandModifiers;
 	}
 
 	@Override
