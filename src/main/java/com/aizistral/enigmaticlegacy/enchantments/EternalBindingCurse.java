@@ -3,6 +3,7 @@ package com.aizistral.enigmaticlegacy.enchantments;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aizistral.enigmaticlegacy.api.items.IBindable;
 import org.apache.commons.lang3.StringUtils;
 
 import com.aizistral.enigmaticlegacy.EnigmaticLegacy;
@@ -49,9 +50,14 @@ public class EternalBindingCurse extends Enchantment {
 
 	@Override
 	public boolean canEnchant(ItemStack stack) {
-		return OmniconfigHandler.isItemEnabled(this) && !stack.is(EnigmaticItems.CURSED_RING)
-				&& !stack.is(EnigmaticItems.ESCAPE_SCROLL) && !stack.is(EnigmaticItems.ENIGMATIC_AMULET)
-				&& !stack.is(EnigmaticItems.DESOLATION_RING) && super.canEnchant(stack);
+		if (!OmniconfigHandler.isItemEnabled(this))
+			return false;
+
+		if (stack.is(EnigmaticItems.CURSED_RING) || stack.is(EnigmaticItems.ESCAPE_SCROLL) ||
+				stack.is(EnigmaticItems.ENIGMATIC_AMULET) || stack.is(EnigmaticItems.DESOLATION_RING))
+			return false;
+
+		return stack.getItem() instanceof IBindable || super.canEnchant(stack);
 	}
 
 	@Override
