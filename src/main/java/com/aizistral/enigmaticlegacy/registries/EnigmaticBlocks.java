@@ -55,6 +55,9 @@ public class EnigmaticBlocks extends AbstractRegistry<Block> {
 	@ObjectHolder(value = MODID + ":end_anchor", registryName = "block")
 	public static final BlockEndAnchor END_ANCHOR = null;
 
+	@ObjectHolder(value = MODID + ":star_fabric", registryName = "block")
+	public static final BlockStarFabric STAR_FABRIC = null;
+
 	private EnigmaticBlocks() {
 		super(ForgeRegistries.BLOCKS);
 		this.register("massive_lamp", BlockMassiveLamp::new, GenericBlockItem::new);
@@ -67,10 +70,13 @@ public class EnigmaticBlocks extends AbstractRegistry<Block> {
 		this.register("end_anchor", BlockEndAnchor::new, block -> new EndAnchor());
 
 		this.register("etherium_block", BlockEtherium::new, block ->
-		new GenericBlockItem(block, GenericBlockItem.getDefaultProperties().rarity(Rarity.RARE)));
+			new GenericBlockItem(block, GenericBlockItem.getDefaultProperties().rarity(Rarity.RARE)));
 
 		this.register("astral_block", BlockAstralDust::new, block ->
-		new GenericBlockItem(block, GenericBlockItem.getDefaultProperties().rarity(Rarity.EPIC)));
+			new GenericBlockItem(block, GenericBlockItem.getDefaultProperties().rarity(Rarity.EPIC)));
+
+		this.register("star_fabric", BlockStarFabric::new, block ->
+				new GenericBlockItem(block, GenericBlockItem.getDefaultProperties().rarity(Rarity.EPIC)));
 	}
 
 	protected void register(String name, Supplier<Block> block, BlockItemSupplier item) {
