@@ -19,6 +19,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
+import net.minecraft.world.level.block.ChiseledBookShelfBlock;
 import org.apache.commons.lang3.tuple.Triple;
 
 import com.aizistral.enigmaticlegacy.EnigmaticLegacy;
@@ -2572,7 +2573,7 @@ public class EnigmaticEventHandler {
 				if (SuperpositionHandler.isTheWorthyOne(player)) {
 					int heartsGained = SuperpositionHandler.getPersistentInteger(player, "AbyssalHeartsGained", 0);
 
-					if (heartsGained < 4) { // Only as many as there are unique items from them, +1
+					if (heartsGained < 5) { // Only as many as there are unique items from them, +1
 						((IAbyssalHeartBearer) killed).dropAbyssalHeart(player);
 					}
 				}
