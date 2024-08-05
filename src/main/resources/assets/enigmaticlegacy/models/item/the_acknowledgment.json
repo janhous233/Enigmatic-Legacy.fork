@@ -1,6 +1,18 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enigmaticlegacy:item/the_acknowledgment"
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "enigmaticlegacy:item/3d/the_acknowledgment_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "enigmaticlegacy:item/gui/the_acknowledgment_gui"
+    },
+    "fixed": {
+      "parent": "enigmaticlegacy:item/3d/the_acknowledgment_3d"
+    },
+    "ground": {
+      "parent": "enigmaticlegacy:item/3d/the_acknowledgment_3d"
     }
+  }
 }

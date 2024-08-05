@@ -19,6 +19,12 @@
     },
     "head": {
       "parent": "enigmaticlegacy:item/infernal_shield_blocking_in_hand"
+    },
+    "fixed": {
+      "parent": "enigmaticlegacy:item/infernal_shield_blocking_in_hand"
+    },
+    "ground": {
+      "parent": "enigmaticlegacy:item/infernal_shield_blocking_in_hand"
     }
   }
 }

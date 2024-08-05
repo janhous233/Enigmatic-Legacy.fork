@@ -1,6 +1,18 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enigmaticlegacy:item/animal_guidebook"
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "enigmaticlegacy:item/3d/animal_guidebook_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "enigmaticlegacy:item/gui/animal_guidebook_gui"
+    },
+    "fixed": {
+      "parent": "enigmaticlegacy:item/3d/animal_guidebook_3d"
+    },
+    "ground": {
+      "parent": "enigmaticlegacy:item/3d/animal_guidebook_3d"
     }
+  }
 }

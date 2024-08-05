@@ -19,6 +19,12 @@
     },
     "head": {
       "parent": "enigmaticlegacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "fixed": {
+      "parent": "enigmaticlegacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "ground": {
+      "parent": "enigmaticlegacy:item/eldritch_pan_blocking_in_hand"
     }
   }
 }
